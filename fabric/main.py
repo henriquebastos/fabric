@@ -15,7 +15,7 @@ import os
 import sys
 
 from fabric import api # For checking callables against the API 
-from fabric.contrib import console, files, project # Ditto
+from fabric.contrib import console, files, project, autotest # Ditto
 from fabric.network import denormalize, normalize
 from fabric import state # For easily-mockable access to roles, env and etc
 from fabric.state import commands, connections, env_options
@@ -29,6 +29,10 @@ _internals = reduce(lambda x, y: x + filter(callable, vars(y).values()),
     _modules,
     []
 )
+# Workaround to enable common/default commands
+commands.update({
+    "autotest": autotest.autotest,
+})
 
 def load_settings(path):
     """
