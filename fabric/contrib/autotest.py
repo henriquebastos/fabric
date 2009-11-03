@@ -48,5 +48,5 @@ def autotest(command=None, sleep=1):
         new_val = checkSum()
         if val != new_val:
             val = new_val
-            local(command, capture=False)
+            os.system(command)
         time.sleep(sleep)
