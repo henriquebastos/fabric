@@ -1,5 +1,5 @@
 """
-Autotest script to repeat a given test command whenever .py files change.
+Autoexec script to repeat a given test command whenever .py files change.
 """
 
 import os
@@ -8,17 +8,17 @@ from stat import ST_SIZE, ST_MTIME
 from fabric.api import *
 
 
-def autotest(command=None, sleep=1):
+def autoexec(command=None, sleep=1):
     """
-    Run autotest for a given test command.
+    Autoexec a given command whenever a file changes.
 
     It considers the fabfile.py directory as the project root directory, then
     monitors changes in any inner python files.
 
     Usage:
 
-        fab autotest:"manage.py test -v 0"
-        fab autotest:"manage.py test myapp.TestSomeCase"
+        fab autoexec:"manage.py test -v 0"
+        fab autoexec:"manage.py test myapp.TestSomeCase"
 
     This is based on Jeff Winkler's nosy script.
     """
